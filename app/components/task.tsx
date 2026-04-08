@@ -14,7 +14,7 @@ export default function Task() {
 
     setTasks(prev => [
       ...prev,
-      { id: crypto.randomUUID(), text: inputValue, completed: false }
+      { id: Date.now(), text: inputValue, completed: false }
     ]);
 
     setInputValue("");

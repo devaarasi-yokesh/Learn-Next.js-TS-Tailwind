@@ -2,7 +2,7 @@
 import React from "react";
 
 export type TaskType = {
-  id: string;
+  id: number;
   text: string;
   completed: boolean;
 };
