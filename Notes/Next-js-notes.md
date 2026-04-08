@@ -17,3 +17,26 @@
 ## 'State Immutability'
 - In React State variables, we should not change the original array directly.
 - Instead we copy, modify and update as per feature.
+
+## 'Controlled Inputs'
+- In React, controlled inputs handled by using useState() hook to know exactly what is being typed inside the input field.
+- DOM elements were accessed in pure JS, to get the immediate value of the input. But in React, this is the best practice to update values.
+
+## 'Valid HTML Structure for <ul> and <li>'
+- Previous structure for the list: Incorrect 
+<ul>
+    <span>
+    <li></li>
+    </span>
+</ul>
+- Above code is an invalid HTML Structure because it will only allow <li> to be an direct child of <ul>.
+- But still this code will work, also causes some styling issues and React key bugs.
+- Good practice is to have structure like this;
+<ul>
+    <li>
+    </li>
+</ul>
+
+## 'Unique Identifier'
+- For small testing app, use Date.now() since it will show the timestamp in milliseconds.
+- Larger Scale apps, crypto.randomUUID() for unique string values.

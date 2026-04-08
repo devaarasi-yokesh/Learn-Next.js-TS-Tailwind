@@ -1,36 +1,55 @@
 "use client";
 import { useState } from "react";
-import TaskList from "./TaskList";
-
-
-
-
-
+import TaskList, { TaskType } from "./TaskList";
 
 export default function Task() {
-
   const [inputValue, setInputValue] = useState<string>("");
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<TaskType[]>([]);
 
-  const displayTask = () => {
-    setInputValue((document.querySelector("input") as HTMLInputElement).value);
-    setTasks([...tasks, (document.querySelector("input") as HTMLInputElement).value]);
-    // tasks.push((document.querySelector("input") as HTMLInputElement).value);
-    document.querySelector("input")!.value = "";
-  }
+  const addTask = () => {
+    if (!inputValue.trim()) {
+      alert("Please enter a task before submitting.");
+      return;
+    }
 
-  
+    setTasks(prev => [
+      ...prev,
+      { id: crypto.randomUUID(), text: inputValue, completed: false }
+    ]);
+
+    setInputValue("");
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <input type="text"  placeholder="Type something..." className="border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"  />
-
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={displayTask}>Submit
-      </button>
+    <div className="flex flex-col items-center justify-center bg-zinc-50 dark:bg-black font-sans min-h-screen">
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          addTask();
+        }}
+        className="flex flex-col items-center w-full max-w-md"
+      >
+        <input
+          type="text"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+          placeholder="Type something..."
+          className="w-full border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:border-gray-600 dark:text-gray-200"
+        />
+        <button
+          type="submit"
+          disabled={!inputValue.trim()}
+          className={`w-full px-4 py-2 mb-4 rounded-md text-white ${
+            inputValue.trim()
+              ? "bg-blue-500 hover:bg-blue-600"
+              : "bg-gray-400 cursor-not-allowed"
+          } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+        >
+          Add Task
+        </button>
+      </form>
 
       <TaskList tasks={tasks} setTasks={setTasks} />
-
-      
     </div>
   );
 }
