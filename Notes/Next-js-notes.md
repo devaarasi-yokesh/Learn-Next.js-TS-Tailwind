@@ -24,18 +24,22 @@
 
 ## Valid HTML Structure for `<ul>` and `<li>`
 - Previous structure for the list: Incorrect 
-`<ul>
-    <span>
-    <li></li>
-    </span>
-</ul>`
+    ```
+    <ul>
+        <span>
+        <li></li>
+        </span>
+    </ul>
+    ```
 - Above code is an invalid HTML Structure because it will only allow <li> to be an direct child of <ul>.
 - But still this code will work, also causes some styling issues and React key bugs.
 - Good practice is to have structure like this;
-`<ul>
-    <li>
-    </li>
-</ul>`
+        ```
+        <ul>
+            <li>
+            </li>
+        </ul>
+        ```
 
 ## 'Unique Identifier'
 - For small testing app, use Date.now() since it will show the timestamp in milliseconds.
@@ -56,11 +60,13 @@
 
 ## 'finally keyword'
 - This is a keyword used in try catch blocks. 
-``try {
+``
+try {
   console.log("hello");
 } catch (error) {
   console.log("error");
 } finally {
   console.log("always runs");
-}``
+}
+``
 - Content inside finally block always runs, in all cases.
