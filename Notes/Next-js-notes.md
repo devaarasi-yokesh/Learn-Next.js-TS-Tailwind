@@ -40,3 +40,27 @@
 ## 'Unique Identifier'
 - For small testing app, use Date.now() since it will show the timestamp in milliseconds.
 - Larger Scale apps, crypto.randomUUID() for unique string values.
+
+## 'Local Storage & Session Storage'
+- Local storage is storing data in browser's storage with no expiration time.
+- Also local storage data for a document loaded in a private browsing or incongnito tab session is cleared when the last private tab is closed.
+- Session storage will get expired when the session ends means page closed.
+- Official mdn link: here[https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage]
+
+## 'Generic Type' - TS
+- <T> can use any type of data like string, number or any custom data type
+
+## 'Using function in useState hook'
+- Lazy initialization which runs only once on first render
+- To prevent reading unnecessary readings from re-renders.
+
+## 'finally keyword'
+- This is a keyword used in try catch blocks. 
+``try {
+  console.log("hello");
+} catch (error) {
+  console.log("error");
+} finally {
+  console.log("always runs");
+}``
+- Content inside finally block always runs, in all cases.

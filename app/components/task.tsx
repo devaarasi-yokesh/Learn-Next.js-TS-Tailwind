@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
 import TaskList, { TaskType } from "./TaskList";
+import useLocalStorage from "./LocalStorage";
 
 export default function Task() {
   const [inputValue, setInputValue] = useState<string>("");
-  const [tasks, setTasks] = useState<TaskType[]>([]);
+  const [tasks, setTasks, loaded] = useLocalStorage<TaskType[]>("tasks", []);
 
   const addTask = () => {
     if (!inputValue.trim()) {
@@ -16,9 +17,19 @@ export default function Task() {
       ...prev,
       { id: Date.now(), text: inputValue, completed: false }
     ]);
+  
+    
 
     setInputValue("");
   };
+
+if(!loaded){
+    return (
+        <div className="flex items-center justify-center min-h-screen">
+          <p className="text-gray-500">Loading...</p>
+        </div>
+      );
+}
 
   return (
     <div className="flex flex-col items-center justify-center bg-zinc-50 dark:bg-black font-sans min-h-screen">
