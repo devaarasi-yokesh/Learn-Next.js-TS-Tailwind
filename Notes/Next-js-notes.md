@@ -70,3 +70,10 @@ try {
 }
 ``
 - Content inside finally block always runs, in all cases.
+
+## Tailwind Reusable Classes 
+- Used when there is a repeatative utility classes are mentioned in various places over the app.
+- For example, to make a unique pattern for your buttons all over the app - can use reusable class or components to avoid repeating the same utility class everywhere.
+- Reusable Tailwind class names/components = taking repeated utility styles and packaging them into variables, helper functions, or UI components so you can use them again easily.
+
+- The main benefit = cleaner, more consistent, easier-to-maintain UI.
